@@ -1,3 +1,4 @@
+import time
 import argparse
 from materials_io.utils import execute_parser, get_available_parsers
 
@@ -6,9 +7,8 @@ def args_to_parser(parser_name, path):
     if parser_name in get_available_parsers():
         return execute_parser(parser_name, path)
     else:
-        print("Invalid parser mame")
+        print("Invalid parser name")
 
-print(args_to_parser('image', 'tests/data/image/dog2.jpeg'))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -20,5 +20,8 @@ if __name__ == "__main__":
                         type=str, required=True)
     args = parser.parse_args()
 
-
-    args_to_parser(args.parser, args.path)
+    t0 = time.time()
+    meta = args_to_parser(args.parser, args.path)
+    t1 = time.time()
+    print({args.parser: meta})
+    print(t1 - t0)

@@ -1,8 +1,12 @@
+FROM ubuntu:latest
+
 FROM python:latest
 
-MAINTAINER Ryan Wong
+MAINTAINER Ryan Wong 
 
-COPY MaterialsIO /MaterialsIO
+RUN git clone https://github.com/materials-data-facility/MaterialsIO.git && cd MaterialsIO && pip install -e .
+
+COPY cmd_parser_executer.py /MaterialsIO
 
 RUN pip install stevedore sphinx_rtd_theme \
 pymatgen ase mdf_toolbox python-magic dfttopif \
