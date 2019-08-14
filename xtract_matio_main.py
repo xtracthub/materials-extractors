@@ -1,6 +1,6 @@
 import time
 import argparse
-from materials_io.utils.interface import run_all_parsers
+from materials_io.utils.interface import run_all_parsers, get_available_parsers
 
 
 def args_to_parser(path):
@@ -15,7 +15,7 @@ def args_to_parser(path):
     """
     meta_dictionary = {"matio": {}}
 
-    parser_gen = run_all_parsers(path, exclude_parsers=['noop', 'generic'])
+    parser_gen = run_all_parsers(path, exclude_parsers=['noop', 'generic', 'csv'])
     for parser_data in parser_gen:
         meta_dictionary["matio"].update({parser_data[1]: parser_data[2]})
 
