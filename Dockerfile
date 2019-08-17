@@ -2,7 +2,8 @@ FROM python:3.6
 
 MAINTAINER Ryan Wong 
 
-RUN git clone https://github.com/materials-data-facility/MaterialsIO.git && cd MaterialsIO && pip install -r requirements.txt
+RUN git clone https://github.com/materials-data-facility/MaterialsIO.git && cd MaterialsIO && pip install -e . \
+    && pip install -r requirements.txt
 
 COPY xtract_matio_main.py / 
 
