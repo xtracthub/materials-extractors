@@ -15,6 +15,7 @@ def extract_matio(path):
     meta_dictionary = {"matio": {}}
 
     parser_gen = run_all_parsers(path, exclude_parsers=['noop', 'generic', 'csv'])
+    # parser_gen = run_all_parsers(path, exclude_parsers=['noop'])
     for parser_data in parser_gen:
         meta_dictionary["matio"].update({parser_data[1]: parser_data[2]})
 
@@ -30,5 +31,5 @@ if __name__ == "__main__":
                         type=str, required=True)
     args = parser.parse_args()
 
-    meta = args_to_parser(args.path)
+    meta = extract_matio(args.path)
     print(meta)
