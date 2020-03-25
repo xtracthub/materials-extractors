@@ -51,3 +51,8 @@ class CrystalStructureParser(BaseSingleFileParser):
 
     def version(self):
         return '0.0.1'
+
+# if __name__ == '__main__':
+#    parser = CystalStructureParser(BaseSingleFileParserr)
+#    abc = parser._parse_file('/Users/tylerskluzacek/matio-data/watergrid_PBE0_record-1237.xyz')
+#    print(abc)
