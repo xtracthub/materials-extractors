@@ -11,6 +11,8 @@ RUN git clone -b match_adapter https://github.com/materials-data-facility/Materi
 RUN git clone https://github.com/xtracthub/xtracthub-service.git \ 
     && cp xtracthub-service/exceptions.py /
 
+RUN pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+
 ENV container_version=14
 
 COPY xtract_matio_main.py / 
