@@ -1,13 +1,16 @@
 import time
 import argparse
-from materials_io.utils.interface import get_available_parsers, get_parser, run_all_parsers_on_group
+from materials_io.utils.interface import run_all_parsers_on_group
 
 import os
 
+
 def extract_matio(paths, parser):
-    """Runs a file through all available MaterialsIO parsers.
+    """Runs a file through MaterialsIO parsers.
+
     Parameter:
-    path (str): File path of file to parse.
+    paths (list(str): List of paths of files to parse.
+
     Return:
     meta_dictionary (dict): Dictionary of all metadata extracted using
     MaterialsIO parsers.
@@ -21,17 +24,16 @@ def extract_matio(paths, parser):
     try:
         gen_dump = []
         # parser_gen = execute_parser(parser, paths) # List index error from this line.
-        parser_gen = run_all_parsers_on_group(group=paths, adapter_map='match', include_parsers=[parser])
-            
+        parser_gen = run_all_parsers_on_group(group=paths, adapter_map="match", include_parsers=[parser])
+
         for item in parser_gen:
             gen_dump.append(item)
-            
+
         meta_dictionary["matio"] = gen_dump
 
     except Exception as e:
         # meta_dictionary["matio"]
         meta_dictionary['error1'] = f"THE LIST ERROR WAS HERE: {e}"
-
 
     meta_dictionary["container_version"] = os.environ['container_version']
 
@@ -48,4 +50,3 @@ if __name__ == "__main__":
     parser.add_argument('--parser', type=str, required=True)
     args = parser.parse_args()
     meta = extract_matio(args.paths, args.parser)
-
