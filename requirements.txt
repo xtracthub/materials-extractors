@@ -1,0 +1,2 @@
+git+https://github.com/materials-data-facility/MaterialsIO@match_adapter
+git+https://github.com/materials-data-facility/mdf-materialsio-adapters@xtracthub2

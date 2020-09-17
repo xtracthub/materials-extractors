@@ -7,6 +7,10 @@ RUN git clone -b match_adapter https://github.com/materials-data-facility/Materi
     && pip install -r requirements.txt \
     && cd
 
+RUN git clone -b xtracthub2 https://github.com/materials-data-facility/mdf-materialsio-adapters \
+    && cd mdf-materialsio-adapters && pip install -e . \
+    && cd
+
 # Get the Xtract code here so we have access to exceptions. 
 RUN git clone https://github.com/xtracthub/xtracthub-service.git \ 
     && cp xtracthub-service/exceptions.py /
@@ -16,4 +20,4 @@ RUN pip install --upgrade google-api-python-client google-auth-httplib2 google-a
 ENV container_version=14
 
 COPY xtract_matio_main.py / 
-COPY test_file.py /
+#COPY test_file.py /

@@ -1,1 +1,0 @@
-recursive-include materials_io/schemas *.json
