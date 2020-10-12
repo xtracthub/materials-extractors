@@ -17,7 +17,12 @@ RUN git clone https://github.com/xtracthub/xtracthub-service.git \
 
 RUN pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
+RUN git clone -b xtract-theta https://github.com/funcx-faas/funcx.git
+RUN cd funcx && pip install funcx_sdk/ funcx_endpoint/ && cd ..
+
 ENV container_version=14
 
 COPY xtract_matio_main.py / 
+
+RUN pip install xtract-sdk
 #COPY test_file.py /
