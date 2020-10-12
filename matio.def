@@ -1,0 +1,24 @@
+Bootstrap: docker
+From: ubuntu:latest
+
+
+%files
+/Users/tylerskluzacek/research/xtract/xtract-matio /xtract-matio
+
+%post
+      apt-get update
+      apt-get install git -y
+      apt-get install -y python3.6 python3-pip
+      rm -rf /var/lib/apt/lists/*
+      python3 -m pip install ipyparallel
+      git clone -b cooley-funcx2 https://github.com/funcx-faas/funcx
+      cd funcx
+      python3 -m pip install -r requirements.txt
+      python3 -m pip install .
+
+      git clone git@github.com:materials-data-facility/MaterialsIO.git
+      cd MaterialsIO
+      python3 -m pip install -e . 
+
+%runscript
+exec python3 "$@"
