@@ -1,3 +1,4 @@
+
 import time
 import argparse
 from materials_io.utils.interface import get_available_parsers, get_parser, run_all_parsers_on_group
@@ -31,7 +32,6 @@ def extract_matio(paths, parser):
     except Exception as e:
         # meta_dictionary["matio"]
         meta_dictionary['error1'] = f"THE LIST ERROR WAS HERE: {e}"
-
 
     meta_dictionary["container_version"] = os.environ['container_version']
 
