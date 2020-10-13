@@ -7,9 +7,14 @@ RUN git clone https://github.com/materials-data-facility/MaterialsIO.git \
     && pip install -r requirements.txt \
     && cd
 
-RUN git clone -b xtracthub2 https://github.com/materials-data-facility/mdf-materialsio-adapters \
-    && cd mdf-materialsio-adapters && pip install -e . \
-    && cd
+#RUN git clone -b xtracthub2 https://github.com/materials-data-facility/mdf-materialsio-adapters \
+#    && cd mdf-materialsio-adapters && pip install -e . \
+#    && cd
+
+COPY mdf-materialsio-adapters /mdf-materialsio-adapters
+RUN cd /mdf-materialsio-adapters && pip install -e . && cd
+
+COPY data-schemas /data-schemas
 
 # Get the Xtract code here so we have access to exceptions. 
 RUN git clone https://github.com/xtracthub/xtracthub-service.git \ 
@@ -27,5 +32,9 @@ ENV container_version=15
 
 COPY xtract_matio_main.py / 
 
+<<<<<<< HEAD
 RUN pip install xtract-sdk
 #COPY test_file.py /
+=======
+COPY test_file.py /
+>>>>>>> 040800290f5512bf0b546f155dd3a4e42579355e
