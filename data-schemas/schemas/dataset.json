@@ -1,0 +1,83 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "dc",
+    "description": "Schema for a dataset. Datasets in the MDF are collections of many data records, which correspond to data from a specific group of files.",
+    "type": "object",
+    "properties": {
+        "dc": {
+            "$ref": "dc.json#/properties/dc"
+        },
+        "mdf": {
+            "$ref": "mdf.json#/properties/mdf"
+        },
+        "mrr": {
+            "$ref": "mrr.json#/properties/mrr"
+        },
+        "origin": {
+            "$ref": "origin.json#/properties/origin"
+        },
+        "custom": {
+            "$ref": "custom.json#/properties/custom"
+        },
+        "projects": {
+            "$ref": "projects.json#/properties/projects"
+        },
+        "links":{
+            "$ref": "links.json#/properties/links"
+        },
+        "services": {
+            "type": "object",
+            "description": "Cross references to other integrated services.",
+            "properties": {
+                "mdf_search": {
+                    "type": "string",
+                    "description": "Information on the dataset in MDF Search"
+                },
+                "mdf_publish": {
+                    "type": "string",
+                    "description": "The link to the MDF Publish dataset."
+                },
+                "citrine": {
+                    "type": "string",
+                    "description": "The link to the Citrine dataset."
+                },
+                "mrr": {
+                    "type": "string",
+                    "description": "Information on the dataset as registered in the MRR."
+                }
+            },
+            "additionalProperties": false
+        },
+        "data": {
+            "type": "object",
+            "description": "The location of and information about the full dataset.",
+            "properties": {
+                "endpoint_path": {
+                    "type": "string",
+                    "description": "The Globus Endpoint and path to the dataset, as a URI."
+                },
+                "link": {
+                    "type": "string",
+                    "description": "A link to the dataset through the Globus Web App."
+                },
+                "external_uri": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Location of the whole dataset."
+                },
+                "total_size": {
+                    "type": "integer",
+                    "description": "The size of the full dataset, in bytes."
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "dc",
+        "mdf",
+        "services",
+        "data"
+    ]
+}

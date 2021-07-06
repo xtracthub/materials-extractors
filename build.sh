@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMAGE_NAME=materials_extractors_image
+IMAGE_NAME=xtract-matio
 
 docker rmi -f $IMAGE_NAME
 

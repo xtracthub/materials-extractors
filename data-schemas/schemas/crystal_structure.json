@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "MDF Crystal Block",
+    "description": "Schema to describe a crystal structure.",
+    "type": "object",
+    "properties": {
+        "crystal_structure": {
+            "type": "object",
+            "description": "Data describing a crystal structure",
+            "properties": {
+                "space_group_number": {
+                    "type": "integer",
+                    "description": "International Union of Crystallography space group number."
+                },
+                "number_of_atoms": {
+                    "type": "number",
+                    "description": "Number of atoms in the unit cell."
+                },
+                "volume": {
+                    "type": "number",
+                    "description": "Volume of the unit cell. Units: angstrom^3"
+                },
+                "stoichiometry": {
+                    "type": "string",
+                    "description": "Generic formula of the crystal (e.g., A2B)"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "space_group_number"
+            ]
+        }
+    }
+}

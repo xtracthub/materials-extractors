@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "MDF image schema",
+    "description": "Schema to describe general images.",
+    "properties": {
+        "image": {
+            "type": "object",
+            "description": "Key metadata about images",
+            "properties": {
+                "shape": {
+                    "description": "The shape of the image, in [y, x, z, ..., channels] format.",
+                    "type": "array",
+                    "items": {
+                        "description": "Dimension size or channel count. Unit: Pixels or number.",
+                        "type": "integer"
+                    }
+                },
+                "color_depth": {
+                    "description": "Number of bits used to describe each color",
+                    "type": "integer"
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}
