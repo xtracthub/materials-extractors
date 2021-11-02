@@ -23,9 +23,10 @@ RUN git clone https://github.com/xtracthub/xtracthub-service.git \
 RUN pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 RUN pip install xtract_sdk==0.0.5
 
-RUN git clone -b main https://github.com/funcx-faas/funcx.git
-RUN cd funcx && pip install funcx_sdk/ funcx_endpoint/ && cd ..
-
+#RUN git clone -b main https://github.com/funcx-faas/funcx.git
+#RUN cd funcx && pip install funcx_sdk/ funcx_endpoint/ && cd ..
+RUN pip install funcx==0.3.0
+RUN pip install funcx_endpoint==0.3.0
 # RUN pip install parsl==0.9.0
 
 ENV container_version=15
