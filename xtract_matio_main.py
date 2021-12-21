@@ -36,7 +36,7 @@ def extract_matio(paths, parser):
         # meta_dictionary["matio"]
         meta_dictionary['error1'] = f"THE LIST ERROR WAS HERE: {e}"
 
-    meta_dictionary["container_version"] = os.environ['container_version']
+    meta_dictionary["CONTAINER_VERSION"] = os.environ['CONTAINER_VERSION']
 
     total_time = time.time() - t0
     meta_dictionary.update({"extract time": total_time})
@@ -44,10 +44,19 @@ def extract_matio(paths, parser):
     return meta_dictionary
 
 
+def execute_extractor(paths, parser):
+
+    mdata = extract_matio(paths, parser)
+    return mdata
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--paths', help='list of files to parse',
+    parser.add_argument('--paths', nargs='+', help='list of files to parse',
                         type=str, required=True)
     parser.add_argument('--parser', type=str, required=True)
     args = parser.parse_args()
     meta = extract_matio(args.paths, args.parser)
+    print(meta)
+
+
