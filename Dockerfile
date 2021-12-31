@@ -19,7 +19,7 @@ COPY data-schemas /data-schemas
 RUN git clone https://github.com/xtracthub/xtracthub-service.git \ 
     && cp xtracthub-service/exceptions.py /
 
-RUN pip install xtract_sdk==0.0.7a3
+RUN pip install xtract_sdk==0.0.7a4
 RUN pip install funcx
 RUN pip install funcx_endpoint
 
@@ -32,6 +32,7 @@ RUN pip install xtract-sdk
 RUN pip uninstall globus_sdk -y && pip install globus_sdk==2.0.1
 
 RUN pip install ase dfttopif python-magic sphinx_rtd_theme tableschema xmltodict
+RUN pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
 COPY test_file.py /
 
